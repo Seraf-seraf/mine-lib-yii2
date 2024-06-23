@@ -1,0 +1,308 @@
+@font-face {
+    font-family: 'Minecraft';
+    src: url('../fonts/minecraft.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    border: none;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('../images/доска.png');
+    background-color: #682222;
+    backdrop-filter: brightness(40%);
+    background-repeat: repeat;
+    border: 10px solid #682222;
+    font-family: 'Minecraft', sans-serif;
+    color: white;
+    overflow: hidden;
+}
+
+.mc-button {
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    user-select: none;
+    background: #999 url(https://i.ibb.co/rb2TWXL/bgbtn.png) center / cover;
+    image-rendering: pixelated;
+    border: 2px solid #000;
+    width: min-content;
+    min-width: 150px;
+}
+
+
+.opened-book.open .buttons-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column-reverse;
+    align-items: center;
+    position: absolute;
+    bottom: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.buttons-wrapper {
+    display: flex;
+    justify-content: center;
+    row-gap: 10px;
+    column-gap: 10px;
+}
+
+.mc-button .title {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #DDD;
+    text-shadow: 2px 2px #000A;
+    box-shadow: inset -2px -4px #0006, inset 2px 2px #FFF7;
+    background: transparent;
+}
+
+.mc-button:hover .title {
+    background-color: rgba(100, 100, 255, 0.45);
+    text-shadow: 2px 2px #202013CC;
+    color: #FFFFA0;
+}
+
+.mc-button:active .title {
+    box-shadow: inset -2px -4px #0004, inset 2px 2px #FFF5;
+}
+
+.mc-button.red-btn:hover .title {
+    background-color: #be0000;
+}
+
+.help-block {
+    color: #be0000;
+}
+
+.book-shelf {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    width: 250px;
+    min-height: 250px;
+}
+
+.book {
+    position: relative;
+    display: block;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+.book:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* params for books */
+.book-only-red {
+    background-image: url('../images/books/only-red.png');
+}
+
+.book-brown {
+    background-image: url('../images/books/brown.png');
+}
+
+.book-blue {
+    background-image: url('../images/books/blue.png');
+}
+
+.book-brown-green {
+    background-image: url('../images/books/brown-green.png');
+}
+
+.book-turquoise-white {
+    background-image: url('../images/books/turquoise-white.png');
+}
+
+.book-green-white {
+    background-image: url('../images/books/green-white.png');
+}
+
+.book-red {
+    background-image: url('../images/books/red.png');
+}
+
+.book-w15-h60 {
+    background-size: 15px 60px;
+}
+
+.book-w15-h70 {
+    background-size: 15px 70px;
+}
+
+.book-w15-h80 {
+    background-size: 15px 80px;
+}
+
+.book-w20-h70 {
+    background-size: 20px 70px;
+}
+
+.book-w20-h80 {
+    background-size: 20px 80px;
+}
+
+/* params for books END */
+
+.shelf-wrapper {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(3, min-content);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.shelf-row {
+    display: grid;
+    grid-template-columns: repeat(5, 40px);
+    column-gap: 3px;
+    border: 19px solid transparent;
+    border-image: url('../images/доска.png') 30 round;
+    position: relative;
+}
+
+/* book editor START */
+
+.opened-book {
+    display: none;
+}
+
+.opened-book.open {
+    display: block;
+    width: 800px;
+    height: 58vh;
+    background-image: url("../images/opened-book.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-position-x: center;
+}
+
+.opened-book.open ~ .add-book {
+    display: none;
+}
+
+.editor-wrapper {
+    position: relative;
+    top: 30px;
+    left: 100px;
+    display: grid;
+    grid-template-columns: repeat(2, 35%);
+    justify-content: space-around;
+    width: 600px;
+}
+
+.page {
+    background-color: transparent;
+    resize: none;
+    border: none;
+    outline: none;
+    margin: auto 0;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.editor-wrapper strong  {
+    position: absolute;
+    color: #bebebe;
+    top: 0;
+    right: 20px;
+    cursor: pointer;
+}
+
+/* book editor END */
+
+/* info about book in editor START */
+
+.about-book {
+    position: absolute;
+    top: 30vh;
+    right: 5vh;
+    display: none;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.30);
+    padding: 10px;
+    margin: 0;
+}
+
+.about-book table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.about-book tr {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 30px;
+}
+
+.about-book th, .about-book td {
+    padding: 5px;
+    color: #fefe3f;
+    white-space: nowrap;
+}
+
+.about-book th {
+    color: #fff;
+    font-weight: normal;
+    width: 10vw;
+}
+
+.about-book td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* info about book in editor END */
+
+section.add {
+    width: 70vw;
+}
