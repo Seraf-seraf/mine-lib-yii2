@@ -233,7 +233,7 @@ body {
 .editor-wrapper {
     position: relative;
     top: 30px;
-    left: 100px;
+    left: 85px;
     display: grid;
     grid-template-columns: repeat(2, 35%);
     justify-content: space-around;
